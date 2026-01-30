@@ -1,0 +1,14 @@
+{{ block title }}
+    提案額の受け入れ判断
+{{ endblock }}
+
+{{ block content }}
+<p>
+	あなたは<B>プレイヤー2</B>に割り振られました.
+</p>
+<p>
+	相手はあなたに{{group.proposal}}を渡すことを提案しました.
+</p>
+	{{ formfields }}
+    {{ next_button }}
+{{ endblock }}
