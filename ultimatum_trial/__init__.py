@@ -10,7 +10,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'ultimatum_trial'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
-    ENDOWMENT=cu(10)
+    ENDOWMENT=cu(1000)
 
 
 class Subsession(BaseSubsession):
@@ -19,7 +19,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     proposal=models.CurrencyField(
-        choices=currency_range(cu(0),C.ENDOWMENT,cu(1)),
+        choices=currency_range(cu(0),C.ENDOWMENT,cu(10)),
         label='プレイヤー2にいくら渡しますか？',
         initial=cu(0)
     )
@@ -94,4 +94,4 @@ class Page5(WaitPage):
 class Page6(Page):
     pass
 
-page_sequence = [Page1, Page2, Page3,Page4,Page5,Page6]
+page_sequence = [Page1, Page2, Page3, Page4, Page5, Page6]
