@@ -21,11 +21,12 @@ class Group(BaseGroup):
     proposal=models.CurrencyField(
         choices=currency_range(cu(0),C.ENDOWMENT,cu(10)),
         label='プレイヤー2にいくら渡しますか？',
+        widget=widgets.RadioSelect,
         initial=cu(0)
     )
-    accepted_or_not=models.BooleanField(
-        label='あなたは提案を受け入れますか？',
-        initial=False
+    accepted_or_not=models.StringField(
+        choices=[['yes', 'はい'], ['no', 'いいえ']],
+        label='あなたはこの提案を受け入れますか？',
     )
     Page2timeout=models.IntegerField()
     Page4timeout=models.IntegerField()
@@ -38,7 +39,7 @@ class Player(BasePlayer):
 def compute(group: Group):
     p1=group.get_player_by_id(1)
     p2=group.get_player_by_id(2)
-    if group.accepted_or_not==True:
+    if group.accepted_or_not =='yes':
         p1.payoff=C.ENDOWMENT-group.proposal
         p2.payoff=group.proposal
     else:
@@ -94,4 +95,7 @@ class Page5(WaitPage):
 class Page6(Page):
     pass
 
-page_sequence = [Page1, Page2, Page3, Page4, Page5, Page6]
+class Page7(Page):
+    pass
+
+page_sequence = [Page1, Page2, Page3, Page4, Page5, Page6, Page7]
