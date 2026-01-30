@@ -78,12 +78,12 @@ class Page4(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.id_in_group
+        return player.id_in_group==2
     
     @staticmethod
     def before_next_page(player: Player,timeout_happened):
         if timeout_happened:
-            Player.group.accepted_or_not=False
+            player.group.accepted_or_not=False
             player.group.Page4timeout=1
 
 
