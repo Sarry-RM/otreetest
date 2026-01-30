@@ -40,7 +40,7 @@ def compute(group: Group):
     p2=group.get_player_by_id(2)
     if group.accepted_or_not==True:
         p1.payoff=C.ENDOWMENT-group.proposal
-        p1.payoff=group.proposal
+        p2.payoff=group.proposal
     else:
         p1.payoff=cu(0)
         p2.payoff=cu(0)
